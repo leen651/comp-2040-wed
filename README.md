@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 
@@ -7,7 +8,7 @@ Author: Harleen
 Course: COMP 2040  
 Date: september 7, 2025
 
----
+
 
 This Python program analyzes text from a file named `input.txt` and outputs six key statistics:
 
@@ -19,7 +20,7 @@ This Python program analyzes text from a file named `input.txt` and outputs six 
 
 The output is written to both the terminal and a file named `output.txt`.
 
----
+
 
 ## 📌 How to Run
 
@@ -32,3 +33,6 @@ python main.py
 ```
 
 4. Check `output.txt` for the results
+
+# comp-2040-wed
+ cf6614980cb8030b5c4f236d8427b079de8a5d93
