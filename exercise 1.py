@@ -1,0 +1,267 @@
+EXERCISE 
+PART 1
+
+QUESTION 1
+
+
+def area_of_rectangle(length, width):
+    return length * width
+
+def area_of_circle(radius):
+    return 3.14 * (radius ** 2)
+
+# Rectangle Areas
+area_rectangle1 = area_of_rectangle(10, 5)
+area_rectangle2 = area_of_rectangle(15, 7)
+
+# Circle Areas
+area_circle1 = area_of_circle(4)
+area_circle2 = area_of_circle(6)
+
+print("Area of first rectangle:", area_rectangle1)
+print("Area of second rectangle:", area_rectangle2)
+print("Area of first circle:", area_circle1)
+print("Area of second circle:", area_circle2)
+
+
+QUESTION 2
+
+def check_odd_even(numbers):
+    for num in numbers:
+        if num % 2 == 0:
+            print(f"{num} is even.")
+        else:
+            print(f"{num} is odd.")
+
+numbers1 = [10, 15, 22, 29, 30]
+numbers2 = [1, 4, 7, 9, 12]
+numbers3 = [100, 150, 200]
+
+check_odd_even(numbers1)
+check_odd_even(numbers2)
+check_odd_even(numbers3)
+
+
+QUESTION 3
+
+
+def calculate_discounted_price(price, discount):
+    return price - (price * discount)
+
+final_price1 = calculate_discounted_price(100, 0.10)
+final_price2 = calculate_discounted_price(250, 0.15)
+final_price3 = calculate_discounted_price(50, 0.05)
+
+print(f"Final price for customer 1: ${final_price1}")
+print(f"Final price for customer 2: ${final_price2}")
+print(f"Final price for customer 3: ${final_price3}")
+
+
+
+
+PART 2
+QUESTION 1
+def parse_simple_kv(data):
+    result = {}
+    pairs = data.strip().split(";")
+    for pair in pairs:
+        if ":" in pair:
+            key, value = pair.split(":", 1)
+            result[key.strip().lower()] = value.strip()
+    return result
+
+
+data = " Name: John Doe ; Age : 25;  CITY: New York ; Occupation: Software Engineer "
+print(parse_simple_kv(data))
+
+
+QUESTION 2
+def parse_people_data(data):
+    people = data.split("|")
+    result = []
+    for person in people:
+        person_dict = {}
+        attributes = person.strip().split(",")
+        for attr in attributes:
+            if ":" in attr:
+                key, value = attr.split(":", 1)
+                person_dict[key.strip().lower()] = value.strip()
+        result.append(person_dict)
+    return result
+
+
+data = "Name: Alice, Age: 30, City: Los Angeles | Name: Bob, Age: 25, City: Chicago | Name: Charlie , Age: 35, City: New York"
+print(parse_people_data(data))
+
+
+QUESTION 3
+
+import re
+
+def parse_product_data(data):
+    products = data.split(";")
+    result = []
+    for product in products:
+        product_dict = {}
+        attributes = product.strip().split(",")
+        for attr in attributes:
+            key_value = re.split(r":|=|-", attr, maxsplit=1)
+            if len(key_value) == 2:
+                key, value = key_value
+                product_dict[key.strip().lower()] = value.strip()
+        result.append(product_dict)
+    return result
+
+
+data = "product_name: Laptop, price = $999, brand - Dell ; product_name: Smartphone, price: $599 , brand = Samsung ; product_name - Tablet , price=299,brand : Apple"
+print(parse_product_data(data))
+
+
+
+QUESTION 4
+
+def parse_employee_data(data):
+    employees = data.split("|")
+    result = []
+    for emp in employees:
+        emp_dict = {}
+        attributes = emp.strip().split(",")
+        for attr in attributes:
+            if ":" in attr:
+                key, value = attr.split(":", 1)
+                key = key.strip().lower()
+                value = value.strip()
+                if key == "roles":
+                    emp_dict[key] = [role.strip() for role in value.split(",")]
+                else:
+                    emp_dict[key] = value
+        result.append(emp_dict)
+    return result
+
+# Test input
+data = "employee_name: Sarah, department: HR, roles: recruiter, trainer | employee_name: Mike , department: Engineering , roles: developer, team lead | employee_name: Alice , department: HR , roles: recruiter"
+print(parse_employee_data(data))
+
+
+QUESTION 5
+
+def parse_sensor_data(data):
+    devices = data.split("|")
+    result = []
+    for device in devices:
+        device_dict = {}
+        attributes = device.strip().split(",")
+        for attr in attributes:
+            if ":" in attr:
+                key, value = attr.split(":", 1)
+                key = key.strip().lower()
+                value = value.strip()
+                if value == "N/A":
+                    device_dict[key] = None
+                elif value.isdigit():
+                    device_dict[key] = int(value)
+                else:
+                    device_dict[key] = value
+        result.append(device_dict)
+    return result
+
+
+data = "device_id: 001, temp: 72, humidity: 45 | device_id: 002, temp: N/A, humidity: 50 | device_id: 003, temp: 68, humidity: N/A"
+print(parse_sensor_data(data))
+
+
+CHALLANGE EXERCISE
+
+import re
+
+def parse_transaction_data(data):
+    expected_keys = ['transaction_id', 'customer_name', 'item', 'price', 'discount']
+    transactions = data.split(";")
+    result = []
+    for tx in transactions:
+        tx_dict = {key: None for key in expected_keys}
+        attributes = tx.strip().split(",")
+        for attr in attributes:
+            key_value = re.split(r":|=|-", attr, maxsplit=1)
+            if len(key_value) == 2:
+                key, value = key_value
+                key = key.strip().lower()
+                value = value.strip()
+                if key in tx_dict:
+                    tx_dict[key] = value
+        result.append(tx_dict)
+    return result
+
+
+data = "transaction_id:001, customer_name: Alice, item=Laptop, price: $999; transaction_id=002, customer_name: Bob, item - Smartphone, price= $599; transaction_id:003, item=Tablet, price:299, discount-10%; transaction_id=004, customer_name=Charlie, item: Headphones, discount=5%"
+print(parse_transaction_data(data))
+
+
+PART 3
+
+QUESTION 1
+
+x = 15
+
+if x > 10:
+    print("x is greater than 10")
+elif x == 10:
+    print("x is equal to 10")
+else:
+    print("x is less than 10")
+
+
+    QUESTION 2
+
+    numbers = [10, 21, 32, 43, 54]
+
+for num in numbers:
+    if num % 2 == 0:
+        print(f"{num} is even")
+    else:
+        print(f"{num} is odd")
+
+
+QUESTION 3
+
+sentence = 'Python is fun and powerful'
+
+if 'fun' in sentence:
+    print("The sentence contains the word 'fun'.")
+elif 'boring' in sentence:
+    print("The sentence contains the word 'boring'.")
+else:
+    print("The sentence contains neither 'fun' nor 'boring'.")
+
+
+QUESTION 4
+
+
+grades = [85, 92, 78, 90, 92, 85, 92]
+grade_counts = {}
+
+for grade in grades:
+    if grade in grade_counts:
+        grade_counts[grade] += 1
+    else:
+        grade_counts[grade] = 1
+
+# Print the results
+for grade, count in grade_counts.items():
+    print(f"Grade {grade} appears {count} times.")
+
+
+QUESTION 5
+countries = {
+    'Canada': 38,
+    'Brazil': 212,
+    'India': 1391,
+    'Germany': 83,
+    'Japan': 126
+}
+
+for country, population in countries.items():
+    print(f"{country} has a population of {population} million.")
+    if population > 100:
+        print(f"{country} is heavily populated.")
+

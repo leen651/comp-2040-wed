@@ -1,0 +1,6 @@
+Word count: 9
+Unique words: 9
+Characters (with spaces): 44
+Characters (no spaces): 34
+Average word length: 3.8
+Most common word(s): am, and, french, hectic, i, is, it, learning, very (1)
