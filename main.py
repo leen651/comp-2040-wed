@@ -1,6 +1,6 @@
 # main.py
 
-from textstats.py import compute_statistics
+from textstats import compute_statistics
 
 def format_output(stats):
     lines = [
