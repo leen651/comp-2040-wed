@@ -1,5 +1,6 @@
 # main.py
 
+
 import re  
 
 def read_file():
@@ -80,6 +81,8 @@ def write_output(stats):
         line6 = f"Most common word(s): {common_words_line} ({common_count})"
     else:
         line6 = "Most common word(s): (0)"
+
+from textstats import compute_statistics
 
     lines = [
         f"Word count: {word_count}",
