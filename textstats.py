@@ -1,6 +1,4 @@
-# main.py
-
-import re  
+# textstats.py
 
 def read_file():
     # Open input.txt and read the text
@@ -11,14 +9,23 @@ def get_words(text):
     # Convert to lowercase
     text = text.lower()
 
-    # Remove common punctuation (basic way)
+    # Remove common punctuation)
     text = text.replace(",", " ")
     text = text.replace(".", " ")
+    text = text.replace("!", " ")
+    text = text.replace("?", " ")
     text = text.replace("'", " ")
+    text = text.replace("\"", " ")
+    text = text.replace(";", " ")
+    text = text.replace(":", " ")
+    text = text.replace("(", " ")
+    text = text.replace(")", " ")
     text = text.replace("-", " ")
-    
+    text = text.replace("_", " ")
+    text = text.replace("\n", " ")
+    text = text.replace("\t", " ")
 
-    # split the text into words
+    # \ split the text into words
     words = text.split()
 
     return words
@@ -29,6 +36,8 @@ def get_char_counts(text):
 
     # No spaces: remove space, tab, newline
     text_no_spaces = text.replace(" ", "")
+    text_no_spaces = text_no_spaces.replace("\n", "")
+    text_no_spaces = text_no_spaces.replace("\t", "")
     no_spaces = len(text_no_spaces)
 
     return with_spaces, no_spaces
